@@ -1,0 +1,62 @@
+GET http://localhost:3000
+
+###
+POST http://localhost:3000
+Content-Type: application/json
+
+{
+    "name": "John"
+}
+###
+PUT http://localhost:3000
+Content-Type: application/json
+
+{
+    "name": "John"
+}
+
+###
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImlhdCI6MTcwMDIyNzc4NywiZXhwIjoxNzA4MDAzNzg3fQ.u0UDUEoCIHysGlf_KlKM4DfA8xtHBNfzo4Non9eF6Ss
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "email": "j5@j.com",
+    "password": "Azerty123!"
+}
+
+###
+GET http://localhost:3000/users/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImlhdCI6MTcwMDIyNzc4NywiZXhwIjoxNzA4MDAzNzg3fQ.u0UDUEoCIHysGlf_KlKM4DfA8xtHBNfzo4Non9eF6Ss
+
+###
+PATCH http://localhost:3000/users/3
+Content-Type: application/json
+
+{
+    "password": "Doe23;:42"
+}
+
+###
+DELETE http://localhost:3000/users/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImlhdCI6MTcwMDIyNzc4NywiZXhwIjoxNzA4MDAzNzg3fQ.u0UDUEoCIHysGlf_KlKM4DfA8xtHBNfzo4Non9eF6Ss
+
+###
+PATCH http://localhost:3000/users/7
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImlhdCI6MTcwMDIyNzc4NywiZXhwIjoxNzA4MDAzNzg3fQ.u0UDUEoCIHysGlf_KlKM4DfA8xtHBNfzo4Non9eF6Ss
+
+{
+    "lastname": "Doe2!1zez31425"
+}
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "j5@j.com",
+    "password": "Azerty123!"
+}
