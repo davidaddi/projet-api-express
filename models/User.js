@@ -1,11 +1,20 @@
 const { Model, DataTypes } = require("sequelize");
 const connection = require("./db");
 const bcrypt = require("bcryptjs");
+const BankAccount = require('./BankAccount')
 
 class User extends Model {}
 
 User.init(
   {
+    firstname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -26,20 +35,31 @@ User.init(
       type: DataTypes.ENUM,
       values: ["admin", "user"],
       defaultValue: "user",
+      allowNull: false,
     },
-    lastname: DataTypes.STRING,
-    firstname: DataTypes.STRING,
-    dob: DataTypes.DATE,
+    birthDate: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    accountNumber: DataTypes.STRING,
+    phone: DataTypes.STRING,
   },
   {
     sequelize: connection,
   }
 );
 
-User.addHook("beforeCreate", (user) => {
+User.hasMany(BankAccount, { foreignKey: 'userId', as: 'userAccounts' });
+
+User.beforeCreate((user) => {
   user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
 });
-User.addHook("beforeUpdate", (user, options) => {
+
+User.beforeUpdate((user, options) => {
   if (options.fields.includes("password")) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
   }
