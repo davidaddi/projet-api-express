@@ -26,8 +26,13 @@ BankAccount.init(
     },
     userId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       onUpdate: 'CASCADE', 
-      onDelete: 'CASCADE', 
+      onDelete: 'CASCADE',
+      references: {
+        model: 'Users', 
+        key: 'id' 
+      }, 
     },
   },
   {
@@ -35,9 +40,11 @@ BankAccount.init(
   }
 );
 
-BankAccount.belongsTo(User, {
-  foreignKey: 'userId',
-  onDelete: 'CASCADE', 
-});
+BankAccount.associate = function(models) {
+  BankAccount.belongsTo(User, {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE', 
+  });
+};
 
 module.exports = BankAccount;

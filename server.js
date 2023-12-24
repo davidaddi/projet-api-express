@@ -1,6 +1,9 @@
 const express = require("express");
-require('./models/db');
+require("./models/db");
 const UsersRouter = require("./routes/usersDb");
+const BankAccountRouter = require("./routes/bankAccountDb");
+const CreditCardRouter = require("./routes/creditCardsDb");
+const TransactionRouter = require("./routes/transactionsDb");
 const SecurityRouter = require("./routes/security");
 
 const app = express();
@@ -21,19 +24,10 @@ app.use(express.json());
 //  });
 // }
 
-app.get("/", (req, res, next) => {
-  res.send("Hello world");
-});
-
-app.post("/", (req, res, next) => {
-  res.send("Hello world from POST : " + JSON.stringify(req.body));
-});
-
-app.put("/", (req, res, next) => {
-  res.send("Hello world from PUT : " + JSON.stringify(req.body));
-});
-
 app.use(UsersRouter);
+app.use(BankAccountRouter);
+app.use(CreditCardRouter);
+app.use(TransactionRouter);
 app.use(SecurityRouter);
 
 app.listen(3000, () => {
