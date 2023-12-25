@@ -1,39 +1,28 @@
-GET http://localhost:3000
-
-###
-POST http://localhost:3000
-Content-Type: application/json
-
-{
-    "name": "John"
-}
-###
-PUT http://localhost:3000
-Content-Type: application/json
-
-{
-    "name": "John"
-}
-
 ###
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImlhdCI6MTcwMDIyNzc4NywiZXhwIjoxNzA4MDAzNzg3fQ.u0UDUEoCIHysGlf_KlKM4DfA8xtHBNfzo4Non9eF6Ss
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcwMzMzNDMxNywiZXhwIjoxNzExMTEwMzE3fQ.jsrMP5opF0XEfgp37e5uHC03iosHN3cEZe-v_tPOsnM
 
 ###
 POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "email": "j5@j.com",
-    "password": "Azerty123!"
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "j5@j2.com",
+    "password": "Azerty123!",
+    "birthDate": "2000-01-01",
+    "address": "12 ave",
+    "phone": "0458978456"
 }
 
 ###
-GET http://localhost:3000/users/3
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImlhdCI6MTcwMDIyNzc4NywiZXhwIjoxNzA4MDAzNzg3fQ.u0UDUEoCIHysGlf_KlKM4DfA8xtHBNfzo4Non9eF6Ss
+GET http://localhost:3000/users/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcwMzMzNDMxNywiZXhwIjoxNzExMTEwMzE3fQ.jsrMP5opF0XEfgp37e5uHC03iosHN3cEZe-v_tPOsnM
 
 ###
-PATCH http://localhost:3000/users/3
+PATCH http://localhost:3000/users/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcwMzMzNDMxNywiZXhwIjoxNzExMTEwMzE3fQ.jsrMP5opF0XEfgp37e5uHC03iosHN3cEZe-v_tPOsnM
 Content-Type: application/json
 
 {
@@ -42,12 +31,12 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/users/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImlhdCI6MTcwMDIyNzc4NywiZXhwIjoxNzA4MDAzNzg3fQ.u0UDUEoCIHysGlf_KlKM4DfA8xtHBNfzo4Non9eF6Ss
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcwMzMzNDMxNywiZXhwIjoxNzExMTEwMzE3fQ.jsrMP5opF0XEfgp37e5uHC03iosHN3cEZe-v_tPOsnM
 
 ###
 PATCH http://localhost:3000/users/7
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImlhdCI6MTcwMDIyNzc4NywiZXhwIjoxNzA4MDAzNzg3fQ.u0UDUEoCIHysGlf_KlKM4DfA8xtHBNfzo4Non9eF6Ss
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcwMzMzNDMxNywiZXhwIjoxNzExMTEwMzE3fQ.jsrMP5opF0XEfgp37e5uHC03iosHN3cEZe-v_tPOsnM
 
 {
     "lastname": "Doe2!1zez31425"
@@ -57,6 +46,72 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "j5@j.com",
+    "email": "j5@j2.com",
     "password": "Azerty123!"
 }
+
+### 
+GET http://localhost:3000/bankaccounts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcwMzMzNDMxNywiZXhwIjoxNzExMTEwMzE3fQ.jsrMP5opF0XEfgp37e5uHC03iosHN3cEZe-v_tPOsnM
+
+### Get par id
+GET http://localhost:3000/bankaccounts/3
+
+
+### 
+POST http://localhost:3000/bankaccounts/
+Content-Type: application/json
+
+{
+    "userId": 1
+}
+
+### 
+PATCH http://localhost:3000/bankaccounts/2
+Content-Type: application/json
+
+{
+    "accountNumber": "370867445"
+}
+
+### 
+DELETE http://localhost:3000/bankaccounts/3
+
+### 
+GET http://localhost:3000/creditcards
+
+### GET carte par id
+GET http://localhost:3000/creditcards/1
+
+### Créer une CB
+POST http://localhost:3000/creditcards/
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "pin": "12345",
+  "bankAccountId": 370867498
+}
+
+
+### DELETE carte par id 
+DELETE http://localhost:3000/creditcards/3
+
+###
+GET http://localhost:3000/transactions
+
+###
+GET http://localhost:3000/transactions/1
+
+
+###
+POST http://localhost:3000/transactions
+Content-Type: application/json
+
+{
+  "senderAccountNumber": "370867498",
+  "receiverAccountNumber": "492584425",
+  "amount": 500
+}
+
+
