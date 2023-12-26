@@ -5,7 +5,7 @@ const checkAuth = require("../middlewares/checkAuth");
 const isAdmin = require("../middlewares/isAdmin");
 const router = new Router();
 
-//Transaction 
+//Transaction     
 
 router.get("/transactions", checkAuth, isAdmin, async (req, res, next) => {
   res.json(await Transaction.findAll());

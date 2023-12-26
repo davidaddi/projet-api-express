@@ -25,7 +25,7 @@ router.post("/bankaccounts", async (req, res, next) => {
     res.status(201).json(await BankAccount.create(req.body));
   } catch (err) {
     res.status(422).json({
-      error: err.message,
+      error: "User not exists",
     });
   }
 });
