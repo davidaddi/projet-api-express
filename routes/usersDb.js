@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const User = require("../models/User");
 const checkAuth = require("../middlewares/checkAuth");
+const isAdmin = require("../middlewares/isAdmin");
 const router = new Router();
 
 router.get("/users", checkAuth, async (req, res, next) => {
