@@ -1,25 +1,18 @@
 const jwt = require("jsonwebtoken");
+const User = require('../models/User');
 
-module.exports = function (req, res, next) {
-  const authHeader = req.headers.Authorization ?? req.headers.authorization;
-  if (!authHeader) res.sendStatus(401);
-
-  const [type, token] = authHeader.split(/\s+/);
-  if (type !== "Bearer") res.sendStatus(401);
-
+module.exports = async function checkAdmin(req, res, next) {
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = req.userId;
+    const user = await User.findByPk(userId);
 
-    if (payload.role !== "admin") {
-      res.sendStatus(403); 
-      return;
+    if (user && user.role === 'admin') {
+      next();
+    } else {
+      res.sendStatus(403);
     }
-
-    req.userId = payload.sub;
-    req.userRole = payload.role; 
-    next();
-  } catch (e) {
-    res.sendStatus(401);
-    console.error(e);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
   }
 };

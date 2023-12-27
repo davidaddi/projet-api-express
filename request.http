@@ -1,6 +1,6 @@
 ###
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcwMzMzNDMxNywiZXhwIjoxNzExMTEwMzE3fQ.jsrMP5opF0XEfgp37e5uHC03iosHN3cEZe-v_tPOsnM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsImlhdCI6MTcwMzY5MzA3NywiZXhwIjoxNzExNDY5MDc3fQ.fG10Ce8iDSttNX74LlenPXK_ZBkb6VBKenhhUXHGgr0
 
 ###
 POST http://localhost:3000/users
@@ -9,7 +9,7 @@ Content-Type: application/json
 {
     "firstname": "John",
     "lastname": "Doe",
-    "email": "j5@j2.com",
+    "email": "j5@j3.com",
     "password": "Azerty123!",
     "birthDate": "2000-01-01",
     "address": "12 ave",
@@ -18,11 +18,11 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/users/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcwMzMzNDMxNywiZXhwIjoxNzExMTEwMzE3fQ.jsrMP5opF0XEfgp37e5uHC03iosHN3cEZe-v_tPOsnM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsImlhdCI6MTcwMzY5MzA3NywiZXhwIjoxNzExNDY5MDc3fQ.fG10Ce8iDSttNX74LlenPXK_ZBkb6VBKenhhUXHGgr0
 
 ###
 PATCH http://localhost:3000/users/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcwMzMzNDMxNywiZXhwIjoxNzExMTEwMzE3fQ.jsrMP5opF0XEfgp37e5uHC03iosHN3cEZe-v_tPOsnM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsImlhdCI6MTcwMzY5MzA3NywiZXhwIjoxNzExNDY5MDc3fQ.fG10Ce8iDSttNX74LlenPXK_ZBkb6VBKenhhUXHGgr0
 Content-Type: application/json
 
 {
@@ -31,12 +31,12 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/users/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcwMzMzNDMxNywiZXhwIjoxNzExMTEwMzE3fQ.jsrMP5opF0XEfgp37e5uHC03iosHN3cEZe-v_tPOsnM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsImlhdCI6MTcwMzY5MzA3NywiZXhwIjoxNzExNDY5MDc3fQ.fG10Ce8iDSttNX74LlenPXK_ZBkb6VBKenhhUXHGgr0
 
 ###
 PATCH http://localhost:3000/users/7
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcwMzMzNDMxNywiZXhwIjoxNzExMTEwMzE3fQ.jsrMP5opF0XEfgp37e5uHC03iosHN3cEZe-v_tPOsnM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsImlhdCI6MTcwMzY5MzA3NywiZXhwIjoxNzExNDY5MDc3fQ.fG10Ce8iDSttNX74LlenPXK_ZBkb6VBKenhhUXHGgr0
 
 {
     "lastname": "Doe2!1zez31425"
@@ -46,13 +46,13 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "j5@j2.com",
+    "email": "j5@j3.com",
     "password": "Azerty123!"
 }
 
 ### 
 GET http://localhost:3000/bankaccounts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcwMzMzNDMxNywiZXhwIjoxNzExMTEwMzE3fQ.jsrMP5opF0XEfgp37e5uHC03iosHN3cEZe-v_tPOsnM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsImlhdCI6MTcwMzY5MzA3NywiZXhwIjoxNzExNDY5MDc3fQ.fG10Ce8iDSttNX74LlenPXK_ZBkb6VBKenhhUXHGgr0
 
 ### Get par id
 GET http://localhost:3000/bankaccounts/3
@@ -71,7 +71,7 @@ PATCH http://localhost:3000/bankaccounts/2
 Content-Type: application/json
 
 {
-    "accountNumber": "370867445"
+    "balance": "1"
 }
 
 ### 
