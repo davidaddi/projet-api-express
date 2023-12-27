@@ -4,7 +4,7 @@ const checkAuth = require("../middlewares/checkAuth");
 const isAdmin = require("../middlewares/isAdmin");
 const router = new Router();
 
-router.get("/users", checkAuth, async (req, res, next) => {
+router.get("/users", checkAuth, isAdmin, async (req, res, next) => {
   //res.status(200).send(JSON.stringify(users));
   if (req.userId) {
     req.query.id = req.userId;
@@ -36,7 +36,7 @@ router.get("/users/:id", async (req, res, next) => {
   }
 });
 
-router.patch("/users/:id", checkAuth, async (req, res, next) => {
+router.patch("/users/:id", checkAuth, isAdmin, async (req, res, next) => {
   if (req.userId !== parseInt(req.params.id)) res.sendStatus(403);
   try {
     const result = await User.update(req.body, {
@@ -57,7 +57,7 @@ router.patch("/users/:id", checkAuth, async (req, res, next) => {
   }
 });
 
-router.delete("/users/:id", checkAuth, async (req, res, next) => {
+router.delete("/users/:id", checkAuth, isAdmin, async (req, res, next) => {
   const result = await User.destroy({
     where: {
       id: parseInt(req.params.id),
@@ -66,7 +66,7 @@ router.delete("/users/:id", checkAuth, async (req, res, next) => {
   res.sendStatus(result === 0 ? 404 : 204);
 });
 
-router.put("/users/:id", async (req, res, next) => {
+router.put("/users/:id", checkAuth, async (req, res, next) => {
   try {
     const result = await User.destroy({
       where: {

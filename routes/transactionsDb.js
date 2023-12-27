@@ -33,7 +33,7 @@ router.post("/transactions", async (req, res, next) => {
     });
 
     if (!senderAccount || !receiverAccount) {
-      return res.status(422).json({
+      return res.status(422).send({
         error: "Un ou plusieurs comptes n'existent pas.",
       });
     }
@@ -54,7 +54,8 @@ router.post("/transactions", async (req, res, next) => {
       date: new Date(), 
     });
 
-    res.status(201).json({
+    res.status(201).send({
+      success: "La transaction a bien été effectuée",
       senderAccount,
       receiverAccount,
       transaction: newTransaction, 

@@ -9,7 +9,9 @@ module.exports = async function checkAdmin(req, res, next) {
     if (user && user.role === 'admin') {
       next();
     } else {
-      res.sendStatus(403);
+      res.status(403).send({
+        error:"Accès interdit aux non-admins"
+      });
     }
   } catch (error) {
     console.error(error);
